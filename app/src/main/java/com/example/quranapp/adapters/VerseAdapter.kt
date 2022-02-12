@@ -1,5 +1,6 @@
 package com.example.quranapp.adapters
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -48,12 +49,14 @@ class VerseAdapter : ListAdapter<Verse, VerseAdapter.VerseHolder>(VerseComparato
 
     class VerseComparator : DiffUtil.ItemCallback<Verse>() {
         override fun areItemsTheSame(oldItem: Verse, newItem: Verse): Boolean {
-            return oldItem === newItem
+            Log.d("areItemsTheSame",(oldItem.id == newItem.id).toString() )
+            return oldItem.id == newItem.id
             // === compare between reference
         }
 
         override fun areContentsTheSame(oldItem: Verse, newItem: Verse): Boolean {
-            return oldItem.id == newItem.id
+            Log.d("areContentsTheSame",(oldItem.favorite== newItem.favorite).toString() )
+            return oldItem.favorite == newItem.favorite
         }
 
     }

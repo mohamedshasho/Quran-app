@@ -2,11 +2,13 @@ package com.example.quranapp.models
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
+import androidx.room.Index
 import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
 
 @Entity(
     tableName = "juz_table",
+//    indices = { @Index(value = {"first_verse_id"}, unique = true)}
 //    foreignKeys = arrayOf(
 //        ForeignKey(
 //            entity = Verse::class,

@@ -8,5 +8,6 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerview_sura"
         android:layout_width="match_parent"
+        android:layoutDirection="ltr"
         android:layout_height="match_parent" />
 </FrameLayout>

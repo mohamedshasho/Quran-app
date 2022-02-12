@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.util.Log
 
 import android.view.*
+import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.fragment.app.Fragment
 
@@ -26,6 +27,7 @@ class MainActivity : AppCompatActivity() {
     private val binding: ActivityMainBinding by lazy {
         ActivityMainBinding.inflate(layoutInflater)
     }
+
     companion object {
         private const val TAG_FRAGMENT_ONE = "fragment_one"
         private const val TAG_FRAGMENT_TWO = "fragment_two"
@@ -33,14 +35,12 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-   private val database by lazy { MyRoomDatabase.getInstant(this) }
-   private val repository by lazy { DbRepository.getInstant(database) }
+    private val database by lazy { MyRoomDatabase.getInstant(this) }
+    private val repository by lazy { DbRepository.getInstant(database) }
 
     val viewModel: MainViewModel by viewModels {
-       MainViewModelFactory(repository)
-   }
-
-
+        MainViewModelFactory(repository)
+    }
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -59,17 +59,16 @@ class MainActivity : AppCompatActivity() {
             window.statusBarColor = Color.GRAY
         }
 
+        viewModel.loadDataFromServer()
 
-        //viewModel.loadDataFromNetwork()
-        binding.progressBar.visibility = View.GONE
-
-//        viewModel.getJuzsFromDb().observe(this, { juzs ->
-//            Log.d("livedata main", juzs.size.toString())
-//        })
-//        viewModel.getSurasFromDb().observe(this, { suras ->
-//
-//            Log.d("livedata main", suras.size.toString())
-//        })
+        viewModel.progressBar.observe(this, {
+            if (it)
+                binding.progressBar.visibility = View.VISIBLE
+            else binding.progressBar.visibility = View.GONE
+        })
+        viewModel.error.observe(this, {
+            Toast.makeText(this, it, Toast.LENGTH_SHORT).show()
+        })
 
 
         setFragment(HomeFragment(), TAG_FRAGMENT_ONE)
@@ -111,8 +110,6 @@ class MainActivity : AppCompatActivity() {
         super.onDestroy()
         Log.d("onDestroy", "onDestroy")
     }
-
-
 
 
 }

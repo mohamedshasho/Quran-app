@@ -1,10 +1,7 @@
 package com.example.quranapp.database
 
 import androidx.lifecycle.LiveData
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.Query
-import androidx.room.Update
+import androidx.room.*
 import com.example.quranapp.models.Verse
 import kotlin.random.Random
 
@@ -13,7 +10,7 @@ interface VerseDao {
 
 
 
-    @Insert
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insertVerse(verse: Verse)
 
     @Query("Select * from verse")
@@ -36,6 +33,10 @@ interface VerseDao {
 
     @Query("select * from  verse where id=:id")
     fun getVerse(id:Int): LiveData<Verse>
+
+
+    @Query("select id from verse order by id desc limit 1 ")
+    fun checkIsEmpty():Int
 
 
 }
