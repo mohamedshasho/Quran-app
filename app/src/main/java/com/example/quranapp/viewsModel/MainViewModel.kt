@@ -20,7 +20,7 @@ class MainViewModel(private val dbRepository: DbRepository) : ViewModel() {
         private const val SIZE_OF_VERSES = 6236;
     }
 
-    val verse = dbRepository.getRandomVerse(Random().nextInt(SIZE_OF_VERSES))
+    val verseSura = dbRepository.getRandomVerse(Random().nextInt(SIZE_OF_VERSES))
 
     val error = MutableLiveData<String>()
     val progressBar = MutableLiveData<Boolean>()
@@ -58,5 +58,13 @@ class MainViewModel(private val dbRepository: DbRepository) : ViewModel() {
         dbRepository.insertVerse(verse)
     }
 
+    fun getFavoriteVerse():LiveData<List<Verse>>{
+        return  dbRepository.getFavoriteVerse()
+    }
 
+    fun setFavorite(id: Int) {
+        viewModelScope.launch(Dispatchers.IO) {
+            dbRepository.setFavoriteVerse(id)
+        }
+    }
 }

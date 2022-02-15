@@ -36,8 +36,12 @@ class HomeFragment : Fragment(), AppBarLayout.OnOffsetChangedListener {
         binding = FragmentHomeBinding.inflate(layoutInflater, container, false)
         binding.appbar.addOnOffsetChangedListener(this)
 
-        viewModel.verse.observe(viewLifecycleOwner,  { verse ->
-            verse?.let { binding.textviewHomeVerbDay.text=it }
+        viewModel.verseSura.observe(viewLifecycleOwner,  { verse_sura ->
+
+            verse_sura?.let {
+                binding.textviewHomeVerbDay.text=it.textVerse
+                binding.textviewHomeSubVerbDay.text= "from ${it.nameSura}"
+            }
         })
 
         lifecycleScope.launch(Dispatchers.IO) {
@@ -58,19 +62,15 @@ class HomeFragment : Fragment(), AppBarLayout.OnOffsetChangedListener {
     override fun onOffsetChanged(appBarLayout: AppBarLayout?, verticalOffset: Int) {
         Log.d("appbar", (abs(verticalOffset) - appBarLayout!!.totalScrollRange).toString())
         val s = (abs(verticalOffset) - appBarLayout.totalScrollRange) * -1
-        if (s in 51..99) {
-            binding.relativeTools.alpha = 0.5f
-            binding.relativelayoutLocation.visibility = View.GONE
 
-        }
-        if (s in 99..200) {
-            binding.relativeTools.alpha = 0.7f
-            binding.relativelayoutLocation.visibility = View.VISIBLE
-        }
-        if (s > 200) {
-            binding.relativeTools.alpha = 1.0f
-            binding.relativelayoutLocation.visibility = View.VISIBLE
-        }
+
+        val appbarHeightChanging = s.toFloat().div(appBarLayout.totalScrollRange)
+
+        binding.relativeTools.alpha = appbarHeightChanging
+        binding.relativelayoutLocation.alpha=appbarHeightChanging
+
+        binding.textviewHomeDate.alpha = appbarHeightChanging
+        binding.textviewHomeSubDate.alpha = appbarHeightChanging
 
         if (abs(verticalOffset) - appBarLayout.totalScrollRange == 0) {
             //  Collapsed
@@ -93,20 +93,5 @@ class HomeFragment : Fragment(), AppBarLayout.OnOffsetChangedListener {
         }
     }
 
-//    private fun render(){
-//        lifecycleScope.launchWhenCreated {
-//            viewModel.state.collect {
-//                when(it){
-//                    is MainViewState.RandomVerse -> {
-//                        it.verse.observe(viewLifecycleOwner,{
-//                            binding.textviewHomeVerbDay.text=it
-//                        })
-//                    }
-//                    is MainViewState.RandomVerseError ->binding.textviewHomeVerbDay.text=it.error
-//                    is MainViewState.Idle ->binding.textviewHomeVerbDay.text="Idle"
-//                }
-//            }
-//        }
-//    }
 
 }

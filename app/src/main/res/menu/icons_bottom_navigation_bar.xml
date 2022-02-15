@@ -10,7 +10,7 @@
         android:icon="@drawable/icon_quran_bottom_navbar_style"
         android:title=""/>
     <item
-        android:id="@+id/bar_setting"
-        android:icon="@drawable/icon_setting_bottom_navbar_style"
+        android:id="@+id/bar_favorite"
+        android:icon="@drawable/icon_favorite_bottom_navbar_style"
         android:title=""/>
 </menu>

@@ -49,11 +49,11 @@ class  SuraAdapter : ListAdapter<Sura, SuraAdapter.SuraHolder>(SurasComparator()
 
     class SurasComparator : DiffUtil.ItemCallback<Sura>() {
         override fun areItemsTheSame(oldItem: Sura, newItem: Sura): Boolean {
-            return oldItem === newItem
+            return oldItem.id == newItem.id
         }
 
         override fun areContentsTheSame(oldItem: Sura, newItem: Sura): Boolean {
-            return oldItem.id == newItem.id
+            return oldItem.name == newItem.name
         }
     }
 }

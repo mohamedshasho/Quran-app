@@ -1,8 +1,10 @@
 package com.example.quranapp.viewsModel
 
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.quranapp.models.Verse
 import com.example.quranapp.repo.DbRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch

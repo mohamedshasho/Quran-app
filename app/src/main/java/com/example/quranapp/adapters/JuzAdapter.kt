@@ -48,11 +48,11 @@ class JuzAdapter :
 
     class JuzComparator : DiffUtil.ItemCallback<Juz>() {
         override fun areItemsTheSame(oldItem: Juz, newItem: Juz): Boolean {
-            return oldItem === newItem
+            return oldItem.id == newItem.id
         }
 
         override fun areContentsTheSame(oldItem: Juz, newItem: Juz): Boolean {
-            return oldItem.id == newItem.id
+            return oldItem.versesCount == newItem.versesCount
         }
     }
 }

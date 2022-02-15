@@ -17,7 +17,7 @@ import com.example.quranapp.databinding.ActivityMainBinding
 import com.example.quranapp.repo.DbRepository
 import com.example.quranapp.views.fragments.HomeFragment
 import com.example.quranapp.views.fragments.QuranFragment
-import com.example.quranapp.views.fragments.SettingFragment
+import com.example.quranapp.views.fragments.FavoriteFragment
 import com.example.quranapp.viewsModel.MainViewModel
 import com.example.quranapp.viewsModel.MainViewModelFactory
 
@@ -83,8 +83,8 @@ class MainActivity : AppCompatActivity() {
                     setFragment(QuranFragment(), TAG_FRAGMENT_TWO)
                     return@setOnItemSelectedListener true
                 }
-                R.id.bar_setting -> {
-                    setFragment(SettingFragment(), TAG_FRAGMENT_THREE)
+                R.id.bar_favorite -> {
+                    setFragment(FavoriteFragment(), TAG_FRAGMENT_THREE)
                     return@setOnItemSelectedListener true
                 }
                 else -> return@setOnItemSelectedListener false

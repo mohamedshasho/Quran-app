@@ -45,7 +45,7 @@ class SuraFragment : Fragment() {
 
         })
         suraAdapter.onItemClick = { id ->
-            Toast.makeText(activity, id.toString(), Toast.LENGTH_SHORT).show()
+//            Toast.makeText(activity, id.toString(), Toast.LENGTH_SHORT).show()
             startActivity(Intent(context, VerseShowActivity::class.java).apply {
                 putExtra("id", id)
                 putExtra("type", "verse")

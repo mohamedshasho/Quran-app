@@ -150,9 +150,10 @@
                             android:textStyle="bold" />
 
                         <TextView
+                            android:id="@+id/textview_home_sub_verb_day"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Verb to day"
+                            android:text="subVerb"
                             android:textColor="@color/gray_textview"
                             android:textSize="@dimen/_11ssp" />
                     </LinearLayout>

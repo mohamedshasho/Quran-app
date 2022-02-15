@@ -63,7 +63,6 @@ class VerseShowActivity : AppCompatActivity() {
         verseAdapter.onItemClick = { id_fav ->
             viewModel.setFavorite(id_fav)
 
-            Toast.makeText(this, id_fav.toString(), Toast.LENGTH_SHORT).show()
         }
         if (type == "verse") {
             viewModel.getVerses(id!!).observe(this, { verses ->

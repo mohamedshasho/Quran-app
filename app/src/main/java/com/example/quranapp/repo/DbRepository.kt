@@ -7,6 +7,7 @@ import com.example.quranapp.database.MyRoomDatabase
 import com.example.quranapp.models.Juz
 import com.example.quranapp.models.Sura
 import com.example.quranapp.models.Verse
+import com.example.quranapp.models.VerseSura
 import com.example.quranapp.services.RetrofitInstant
 import retrofit2.awaitResponse
 
@@ -30,15 +31,16 @@ class DbRepository(private val db: MyRoomDatabase) {
     fun getVersesFromDatabase(idVerse: String) = db.VerseDao().getVerse(idVerse)
     fun getJuzFromDatabase(start: Int, end: Int) = db.VerseDao().getJuz(start, end)
     fun getAllJuzFromDatabase() = db.JuzDao().getAllJuz()
-    fun getRandomVerse(num: Int): LiveData<String> = db.VerseDao().getRandomVerse(num)
+    fun getRandomVerse(num: Int): LiveData<VerseSura> = db.VerseDao().getRandomVerse(num)
 
     suspend fun insertJuz(juz: Juz) = db.JuzDao().insertJuz(juz)
     suspend fun insertSura(sura: Sura) = db.SuraDao().insertSura(sura)
     suspend fun insertVerse(verse: Verse) = db.VerseDao().insertVerse(verse)
 
     suspend fun setFavoriteVerse(id: Int) = db.VerseDao().setFavorite(id)
-    suspend fun getAllFavoriteVerse(): LiveData<List<Verse>> = db.VerseDao().getFavorites()
+
     suspend fun getVerseFromDatabase(id: Int): LiveData<Verse> = db.VerseDao().getVerse(id)
+     fun getFavoriteVerse(): LiveData<List<Verse>> = db.VerseDao().getFavoriteVerse()
 
 
     suspend fun fillDataFromNetwork(onSuccess:(progress:Boolean)->Unit, onError: (error: String) -> Unit) {
