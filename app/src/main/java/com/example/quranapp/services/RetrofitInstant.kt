@@ -9,27 +9,25 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class RetrofitInstant {
     companion object {
-        val retrofit = Retrofit.Builder()
+       private val retrofit = Retrofit.Builder()
             .baseUrl(Constants.BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
             .create(ApiService::class.java)
 
 
-        suspend fun getVerses(): Call<ListVerse> {
-            val response = retrofit.getVerses()
-            return response
+        fun getVerses(): Call<ListVerse> {
+           return retrofit.getVerses()
         }
 
-        suspend fun getSuras(): Call<ListSura> {
-            val response = retrofit.getSuras()
-            return response;
+         fun getSuras(): Call<ListSura> {
+            return retrofit.getSuras()
+
         }
 
 
-        suspend fun getAllJuz(): Call<ListJuz> {
-            val response = retrofit.getAllJuz()
-            return response
+        fun getAllJuz(): Call<ListJuz> {
+            return retrofit.getAllJuz()
         }
     }
 
