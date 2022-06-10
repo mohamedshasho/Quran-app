@@ -24,12 +24,8 @@ class RetrofitInstant {
             return retrofit.getSuras()
 
         }
-
-
         fun getAllJuz(): Call<ListJuz> {
             return retrofit.getAllJuz()
         }
     }
-
-
 }

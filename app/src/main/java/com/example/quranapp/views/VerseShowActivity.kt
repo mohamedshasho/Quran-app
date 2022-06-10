@@ -62,7 +62,6 @@ class VerseShowActivity : AppCompatActivity() {
 
         verseAdapter.onItemClick = { id_fav ->
             viewModel.setFavorite(id_fav)
-
         }
         if (type == "verse") {
             viewModel.getVerses(id!!).observe(this, { verses ->

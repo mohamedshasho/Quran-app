@@ -1,7 +1,6 @@
 package com.example.quranapp.repo
 
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import com.example.quranapp.database.MyRoomDatabase
 import com.example.quranapp.models.Juz

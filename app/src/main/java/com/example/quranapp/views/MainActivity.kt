@@ -24,17 +24,18 @@ import com.example.quranapp.viewsModel.MainViewModelFactory
 import kotlinx.coroutines.*
 
 class MainActivity : AppCompatActivity() {
+
     private val binding: ActivityMainBinding by lazy {
         ActivityMainBinding.inflate(layoutInflater)
     }
-
+/*
     companion object {
         private const val TAG_FRAGMENT_ONE = "fragment_one"
         private const val TAG_FRAGMENT_TWO = "fragment_two"
         private const val TAG_FRAGMENT_THREE = "fragment_three"
 
     }
-
+*/
     private val database by lazy { MyRoomDatabase.getInstant(this) }
     private val repository by lazy { DbRepository.getInstant(database) }
 
@@ -70,21 +71,24 @@ class MainActivity : AppCompatActivity() {
             Toast.makeText(this, it, Toast.LENGTH_SHORT).show()
         })
 
-
-        setFragment(HomeFragment(), TAG_FRAGMENT_ONE)
+        if (savedInstanceState == null)
+            setFragment(HomeFragment(), HomeFragment().javaClass.canonicalName!!)
         binding.bottomNavBar.setOnItemSelectedListener {
 
             when (it.itemId) {
                 R.id.bar_home -> {
-                    setFragment(HomeFragment(), TAG_FRAGMENT_ONE)
+                    if (savedInstanceState == null)
+                        setFragment(HomeFragment(), HomeFragment().javaClass.canonicalName!!)
                     return@setOnItemSelectedListener true
                 }
                 R.id.bar_quran -> {
-                    setFragment(QuranFragment(), TAG_FRAGMENT_TWO)
+                    if (savedInstanceState == null)
+                        setFragment(QuranFragment(), QuranFragment().javaClass.canonicalName!!)
                     return@setOnItemSelectedListener true
                 }
                 R.id.bar_favorite -> {
-                    setFragment(FavoriteFragment(), TAG_FRAGMENT_THREE)
+                    if (savedInstanceState == null)
+                        setFragment(FavoriteFragment(), FavoriteFragment().javaClass.canonicalName!!)
                     return@setOnItemSelectedListener true
                 }
                 else -> return@setOnItemSelectedListener false
@@ -99,11 +103,8 @@ class MainActivity : AppCompatActivity() {
         if (supportFragmentManager.findFragmentByTag(tag) != null) {
             return
         }
-
         val fm = supportFragmentManager.beginTransaction()
         fm.replace(R.id.constaint_view_main, fragment, tag).commit()
-
-
     }
 
     override fun onDestroy() {
