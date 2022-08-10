@@ -6,7 +6,6 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.quranapp.views.VerseShowActivity
@@ -17,8 +16,8 @@ import com.example.quranapp.views.MainActivity
 
 class SuraFragment : Fragment() {
 
-    lateinit var binding: FragmentSuraBinding
-    lateinit var suraAdapter: SuraAdapter
+    private   lateinit var binding: FragmentSuraBinding
+    private lateinit var suraAdapter: SuraAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,7 +29,7 @@ class SuraFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
 
-        val viewModel = (activity as MainActivity).viewModel;
+        val viewModel = (activity as MainActivity).viewModel
         binding = FragmentSuraBinding.inflate(layoutInflater, container, false)
 
         binding.recyclerviewSura.apply {

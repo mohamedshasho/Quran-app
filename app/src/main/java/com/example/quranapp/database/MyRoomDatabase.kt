@@ -41,7 +41,7 @@ abstract class MyRoomDatabase : RoomDatabase() {
         }
     }
 
-   private class MyRoomDatabaseCallback() :RoomDatabase.Callback(){
+   private class MyRoomDatabaseCallback :RoomDatabase.Callback(){
        override fun onOpen(db: SupportSQLiteDatabase) {
            super.onOpen(db)
 

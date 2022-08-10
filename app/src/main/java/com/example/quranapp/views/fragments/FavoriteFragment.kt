@@ -6,11 +6,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.quranapp.R
 import com.example.quranapp.adapters.VerseAdapter
 import com.example.quranapp.databinding.FragmentFavoriteBinding
 import com.example.quranapp.views.MainActivity
-import com.example.quranapp.views.VerseShowActivity
 
 
 class FavoriteFragment : Fragment() {

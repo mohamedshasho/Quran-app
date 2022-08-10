@@ -17,7 +17,7 @@ import java.util.Random
 class MainViewModel(private val dbRepository: DbRepository) : ViewModel() {
 
     companion object {
-        private const val SIZE_OF_VERSES = 6236;
+        private const val SIZE_OF_VERSES = 6236
     }
 
     val verseSura = dbRepository.getRandomVerse(Random().nextInt(SIZE_OF_VERSES))

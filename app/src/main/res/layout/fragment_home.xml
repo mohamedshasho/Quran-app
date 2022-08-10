@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -29,6 +28,7 @@
                 android:elevation="5dp"
                 android:fitsSystemWindows="true"
                 android:scaleType="centerCrop"
+
                 android:src="@drawable/ic_day_mode"
                 app:layout_collapseMode="parallax" />
 
@@ -77,23 +77,23 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
-                    android:paddingLeft="@dimen/_5sdp"
+                    android:paddingStart="@dimen/_5sdp"
                     android:src="@drawable/ic_location" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
-                    android:layout_toRightOf="@+id/imageview_ic_location"
+                    android:layout_toEndOf="@+id/imageview_ic_location"
                     android:text="Aleppo"
                     android:textColor="@color/white" />
 
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true"
                     android:layout_centerVertical="true"
-                    android:paddingRight="@dimen/_5sdp"
+                    android:paddingEnd="@dimen/_5sdp"
                     android:src="@drawable/ic_volume_up" />
             </RelativeLayout>
         </com.google.android.material.appbar.CollapsingToolbarLayout>

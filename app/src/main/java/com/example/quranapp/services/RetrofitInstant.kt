@@ -20,9 +20,8 @@ class RetrofitInstant {
            return retrofit.getVerses()
         }
 
-         fun getSuras(): Call<ListSura> {
+        fun getSuras(): Call<ListSura> {
             return retrofit.getSuras()
-
         }
         fun getAllJuz(): Call<ListJuz> {
             return retrofit.getAllJuz()

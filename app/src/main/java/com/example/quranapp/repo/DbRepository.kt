@@ -78,7 +78,7 @@ class DbRepository(private val db: MyRoomDatabase) {
     }
 
 
-    suspend fun getSurasFromNetwork(
+   private suspend fun getSurasFromNetwork(
         onSuccess: (suras: List<Sura>) -> Unit,
         onError: (error: String) -> Unit
     ) {
@@ -93,7 +93,7 @@ class DbRepository(private val db: MyRoomDatabase) {
         }
     }
 
-    suspend fun getAllVersesFromNetwork(
+    private suspend fun getAllVersesFromNetwork(
         onSuccess: (verses: List<Verse>) -> Unit,
         onError: (error: String) -> Unit
     ) {
@@ -108,7 +108,7 @@ class DbRepository(private val db: MyRoomDatabase) {
         }
     }
 
-    suspend fun getAllJuzFromNetwork(
+    private  suspend fun getAllJuzFromNetwork(
         onSuccess: (Juzs: List<Juz>) -> Unit,
         onError: (error: String) -> Unit
     ) {

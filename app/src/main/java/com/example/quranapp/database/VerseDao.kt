@@ -4,7 +4,6 @@ import androidx.lifecycle.LiveData
 import androidx.room.*
 import com.example.quranapp.models.Verse
 import com.example.quranapp.models.VerseSura
-import kotlin.random.Random
 
 @Dao
 interface VerseDao {
